@@ -152,7 +152,7 @@ namespace GiamminLib.ExtensionMethods
                 rtn = Char.ToLowerInvariant(str[0]).ToString(CultureInfo.InvariantCulture);
                 if (str.Length>1)
                 {
-                    rtn = string.Concat(rtn, str.Substring(1));
+                    rtn = string.Concat(rtn, str[1..]);
                 }
             }
             return rtn;
