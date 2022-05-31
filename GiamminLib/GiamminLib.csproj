@@ -13,6 +13,7 @@
 
 		<GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
 		<PackageOutputPath>..\Nuget</PackageOutputPath>
+		 <PackageReadmeFile>Readme.md</PackageReadmeFile>
 		<IncludeSource>true</IncludeSource>
 		<IncludeSymbols>true</IncludeSymbols>
 		<Authors>giammin</Authors>
@@ -36,7 +37,7 @@
 	<ItemGroup>
 		<Content Include="Readme.md">
 			<Pack>true</Pack>
-			<PackagePath>Readme.txt</PackagePath>
+			<PackagePath>\</PackagePath>
 		</Content>
 	</ItemGroup>
 	<ItemGroup>
