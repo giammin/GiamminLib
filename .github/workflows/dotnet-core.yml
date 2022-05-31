@@ -1,11 +1,9 @@
-name: .NET Core
-
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
+name: .NET Core
 jobs:
   build:
 
