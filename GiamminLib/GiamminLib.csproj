@@ -5,11 +5,11 @@
 		<nullable>enable</nullable>
 		<LangVersion>10</LangVersion>
 
-		<VersionPrefix>0.1</VersionPrefix>
+		<VersionPrefix>0.3</VersionPrefix>
 		<buildNumber>0</buildNumber>
 		<VersionSuffix>$([System.DateTime]::Now.ToString(yyMM)).$([System.DateTime]::Now.ToString(dd))</VersionSuffix>
 		<Version>$(VersionPrefix).$(VersionSuffix)$(buildNumber)</Version>
-		<PackageVersion>$(VersionPrefix).1</PackageVersion>
+		<PackageVersion>$(VersionPrefix).0</PackageVersion>
 
 		<GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
 		<PackageOutputPath>..\Nuget</PackageOutputPath>

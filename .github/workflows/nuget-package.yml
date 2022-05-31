@@ -1,6 +1,8 @@
 on:
-  release:
-    types: [released]
+  push:
+    tags:
+      - 'v*'
+      
 name: Publish Nuget package
 jobs:
   build:
