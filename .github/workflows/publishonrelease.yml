@@ -1,6 +1,6 @@
 on:
   release:
-    types: [published]
+    types: [released]
 name: Nuget package on new release
 jobs:
   build:
