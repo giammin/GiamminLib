@@ -16,9 +16,9 @@
 		<IncludeSource>true</IncludeSource>
 		<IncludeSymbols>true</IncludeSymbols>
 		<Authors>giammin</Authors>
-		<RepositoryUrl>https://gitlab.com/prosperomultilab/Prospero/tree/master/GiamminLib</RepositoryUrl>
+		<RepositoryUrl>https://github.com/giammin/GiamminLib.git</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/giammin/GiamminLib</PackageProjectUrl>
-		<Description>Librerie .net standard di Prospero Multilab</Description>
+		<Description>Utility libraries</Description>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageReleaseNotes></PackageReleaseNotes>
 		<PackageTags>library utils</PackageTags>
