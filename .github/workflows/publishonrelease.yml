@@ -1,7 +1,7 @@
 on:
   release:
     types: [released]
-name: Nuget package on new release
+name: PUblish Nuget package
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,4 +17,4 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Push
-      run: dotnet nuget push "./GiamminLib/Nuget/*.symbols.nupkg" --skip-duplicate --api-key {{ secrets.GIAMMINLIBNUGETKEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push "./Nuget/*.symbols.nupkg" --skip-duplicate --api-key {{ secrets.GIAMMINLIBNUGETKEY }} --source https://api.nuget.org/v3/index.json
