@@ -1,7 +1,7 @@
 on:
   release:
     types: [released]
-name: PUblish Nuget package
+name: Publish Nuget package
 jobs:
   build:
     runs-on: ubuntu-latest
