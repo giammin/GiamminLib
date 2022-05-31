@@ -41,7 +41,7 @@ namespace GiamminLib.Security.Cryptography
         /// <returns>the checksum string </returns>
         public static string GetChecksum<T>(byte[] original) where T : HashAlgorithm, new()
         {
-            var hash = Encrypt<T>(original, new byte[0]);
+            var hash = Encrypt<T>(original, Array.Empty<byte>());
 
             var sb = new StringBuilder(hash.Length * 2);
 
