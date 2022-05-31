@@ -2,8 +2,8 @@
 
 CI/CD pipeline learn
 
-[![Build and test](https://github.com/giammin/GiamminLib/actions/workflows/dotnet-core.yml/badge.svg)](https://github.com/giammin/GiamminLib/actions/workflows/dotnet-core.yml)
+[![Build and test](https://github.com/giammin/GiamminLib/actions/workflows/build.yml/badge.svg)](https://github.com/giammin/GiamminLib/actions/workflows/build.yml)
 
-[![Create Release on tag](https://github.com/giammin/GiamminLib/actions/workflows/releaseonpushversion.yml/badge.svg)](https://github.com/giammin/GiamminLib/actions/workflows/releaseonpushversion.yml)
+[![Create Release](https://github.com/giammin/GiamminLib/actions/workflows/github-release.yml/badge.svg)](https://github.com/giammin/GiamminLib/actions/workflows/github-release.yml)
 
-[![Nuget package on new release](https://github.com/giammin/GiamminLib/actions/workflows/publishonrelease.yml/badge.svg)](https://github.com/giammin/GiamminLib/actions/workflows/publishonrelease.yml)
+[![Publish Nuget package](https://github.com/giammin/GiamminLib/actions/workflows/nuget-package.yml/badge.svg)](https://github.com/giammin/GiamminLib/actions/workflows/nuget-package.yml)
