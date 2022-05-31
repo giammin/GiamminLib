@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Create Release
-        uses: ncipollo/release-action@v1.10
+        uses: ncipollo/release-action@latest
         with:
           name: Release ${{ github.ref }}
           draft: false
