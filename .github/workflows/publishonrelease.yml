@@ -4,18 +4,17 @@ on:
 name: Nuget package on new release
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: 3.1.301
+        dotnet-version: '6.0.x'
     - name: Install dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+    - name: Push
+      run: dotnet nuget push "Nuget\*.symbols.nupkg" --skip-duplicate --api-key {{ secrets.GIAMMINLIBNUGETKEY }} --source https://api.nuget.org/v3/index.json
