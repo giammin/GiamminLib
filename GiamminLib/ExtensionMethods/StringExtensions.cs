@@ -1,4 +1,5 @@
-﻿using System;
+#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -11,28 +12,15 @@ namespace GiamminLib.ExtensionMethods
 	///</summary>
 	public static class StringExtensions
 	{
-        /// <summary>
-        /// Extension Methods per string.IsNullOrEmptyOrWhiteSpace(strToConvert) ? nullString : strToConvert
-        /// </summary>
-        /// <param name="nullString">la stringa da ritornare se <paramref name="strToConvert"/> è nulla o vuota</param>
-        /// <param name="strToConvert">la stringa da controllare</param>
-        /// <returns><paramref name="strToConvert"/> se non è nulla o vuota altrimenti <paramref name="nullString"/></returns>
-        public static string ConvertNullOrEmptyTo(this string strToConvert, string nullString) 
-            => string.IsNullOrEmpty(strToConvert.ToStringSafe().Trim()) ? nullString : strToConvert;
-        /// <summary>
-        /// gestisce se l'oggetto è nullo convertendolo in <see cref="string.Empty"/>
-        /// </summary>
-        /// <param name="obj">The object.</param>
-        /// <returns></returns>
-        public static string ToStringSafe(this object obj) => (obj ?? string.Empty).ToString();
+        private static readonly char[] WordsSeparator = string.Concat(Constants.SymbolsChars,Constants.SeparatorChars).ToCharArray();
 
-	    /// <summary>
-		/// converte la stringa in un array di byte senza doversi curare dell'encoding.
-		/// Va usata quando le stringe rimangono nello stesso sistema dotnet
+        /// <summary>
+        /// converte la stringa in un array di byte senza doversi curare dell'encoding.
+        /// Va usata quando le stringe rimangono nello stesso sistema dotnet
         /// equivale ad usare System.Text.Encoding.Unicode.GetBytes()
-		/// http://stackoverflow.com/questions/472906/converting-a-string-to-byte-array
-		/// </summary>
-		public static byte[] GetBytes(this string str)
+        /// http://stackoverflow.com/questions/472906/converting-a-string-to-byte-array
+        /// </summary>
+        public static byte[] GetBytes(this string str)
 		{
 			var rtn = new byte[str.Length * sizeof(char)];
 			Buffer.BlockCopy(str.ToCharArray(), 0, rtn, 0, rtn.Length);
@@ -55,10 +43,9 @@ namespace GiamminLib.ExtensionMethods
 		/// <remarks> i separatori usati sono: ' ', '.', ',', ':', ';', '?', '!'</remarks>
 		/// </summary>
 		/// <returns>count of word</returns>
-		public static int WordsCount(this String str)
+		public static int WordsCount(this string str)
 		{
-			var separator = new[] { " ", ".", ",", ":", ";", "?", "!" };
-			return str.Split(separator, StringSplitOptions.RemoveEmptyEntries).Length;
+			return str.Split(WordsSeparator, StringSplitOptions.RemoveEmptyEntries).Length;
 		}
         
 
@@ -70,7 +57,7 @@ namespace GiamminLib.ExtensionMethods
 		/// <returns>
 		///     <c>true</c> se [se la stringa ha tutti i caratteri appartenenti al "ASCII printable characters" ASCII 128] ; altrimenti, <c>false</c>.
 		/// </returns>
-		public static Boolean IsPrintable(this string str)
+		public static bool IsPrintable(this string str)
 		{
 			bool rtn = true;
 
@@ -85,44 +72,44 @@ namespace GiamminLib.ExtensionMethods
 			return rtn;
 		}
 
-
-#nullable enable
-		/// <summary>
-		/// Tronca un dato testo per un dato numero di caratteri preservando le parole
-		/// </summary>
-		/// <param name="fullText">Il testo da troncare</param>
-		/// <param name="maxLength">La lunghezza massima</param>
-		/// <param name="appendText">Il testo da appendere in caso di troncamento (es. punti di sospensione)</param>
-		/// <returns></returns>
-		public static string Truncate(this string fullText, int maxLength, string? appendText = null)
+        
+        /// <summary>
+        /// Tronca un dato testo per un dato numero di caratteri preservando le parole
+        /// </summary>
+        /// <param name="fullText">Il testo da troncare</param>
+        /// <param name="maxLength">La lunghezza massima</param>
+        /// <param name="minLength">La lunghezza minima</param>
+        /// <param name="appendText">Il testo da appendere in caso di troncamento (es. punti di sospensione)</param>
+        /// <returns></returns>
+        public static string Truncate(this string fullText, int maxLength, int? minLength=null, string? appendText = null)
 		{
-			string rtn = fullText.ToStringSafe();
+            if (fullText == null) throw new ArgumentNullException(nameof(fullText));
+            if (maxLength <= 0) throw new ArgumentOutOfRangeException(nameof(maxLength));
+            if (minLength >=maxLength) throw new ArgumentOutOfRangeException(nameof(minLength));
+
+            var rtn = fullText.Trim();
 
 			if (fullText.Length > maxLength)
 			{
-				//sostituito fullText.LastIndexOf(" ", 0, maxLenght) perché in alcuni casi dava eccezione ArgumentOutOfRangeException
-				rtn = fullText.Substring(0, maxLength);
+                var lastIndexOfAny = fullText.LastIndexOfAny(WordsSeparator, 0,maxLength);
+                if (lastIndexOfAny <= 0 || lastIndexOfAny < minLength)
+                {
+                    lastIndexOfAny = maxLength;
+                }
+#if NET5_0_OR_GREATER
+                rtn = fullText[..lastIndexOfAny];
+#else
+                rtn = fullText.Substring(0,lastIndexOfAny);
+#endif
 
-			    if (appendText!=null)
+                if (appendText!=null)
 			    {
 			        rtn = string.Concat(rtn.TrimEnd(' ', '.'), appendText);
 			    }
 			}
 			return rtn;
 		}
-
-#nullable disable
-		/// <summary>
-		/// Removes the HTML/XML/XHTML tags from the string
-		/// </summary>
-		/// <param name="fullText">The string to parse.</param>
-		/// <returns></returns>
-		public static string RemoveHtmlTags(this string fullText)
-		{
-			var regexStripHtml = new Regex("<[^>]+>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-			return regexStripHtml.Replace(fullText, string.Empty);
-		}
-
+        
         /// <summary>
         /// catch any kind of whitespace (e.g. tabs, newlines, etc.) and replace them with a single space.
         /// </summary>
@@ -149,10 +136,10 @@ namespace GiamminLib.ExtensionMethods
 
             if (!string.IsNullOrEmpty(str) && char.IsUpper(str[0]) )
             {
-                rtn = Char.ToLowerInvariant(str[0]).ToString(CultureInfo.InvariantCulture);
+                rtn = char.ToLowerInvariant(str[0]).ToString(CultureInfo.InvariantCulture);
                 if (str.Length>1)
                 {
-                    rtn = string.Concat(rtn, str[1..]);
+                    rtn = string.Concat(rtn, str.Substring(1));
                 }
             }
             return rtn;
@@ -163,9 +150,9 @@ namespace GiamminLib.ExtensionMethods
 		/// Volutamente lancia un'eccezione se la string non è un valido enum
 		/// </summary>
 		/// <typeparam name="T">deve essere un enum</typeparam>
-		public static T ToEnum<T>(this string enumString) where T : struct // enum non si può mettere... prima di .net 4
+		public static T ToEnum<T>(this string enumString) where T : Enum // enum non si può mettere... prima di .net 4
 		{
-			if (String.IsNullOrEmpty(enumString) || !typeof(T).IsEnum)
+			if (string.IsNullOrEmpty(enumString) || !typeof(T).IsEnum)
 			{
 				throw new Exception("Type given must be an Enum");
 			}
@@ -265,7 +252,7 @@ namespace GiamminLib.ExtensionMethods
                         break;
                 }
             }
-            rtn.Append("'");
+            rtn.Append('\'');
 
             return rtn.ToString();
         }

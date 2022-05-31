@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlTypes;
 
 namespace GiamminLib.ExtensionMethods
 {
@@ -13,20 +14,13 @@ namespace GiamminLib.ExtensionMethods
         /// </summary>
         /// <param name="dateTime">The date time.</param>
         /// <returns> il numero di ticks per inizializzare l'oggetto javascript date</returns>
-        public static long? ToJsonTicks(this DateTime? dateTime) => dateTime?.ToJsonTicks();
-
-        /// <summary>
-        /// Calcola il numero di Ticks per creare la data nel formato Json Es: /Date(1245398693390)/ 
-        /// </summary>
-        /// <param name="dateTime">The date time.</param>
-        /// <returns> il numero di ticks per inizializzare l'oggetto javascript date</returns>
         public static long ToJsonTicks(this DateTime dateTime) => (dateTime.ToUniversalTime().Ticks - Constants.UnixEpochTicks) / 10000;
 
         /// <summary>
         /// Determina se il valore può essere salvato sul database e quindi è >= di <see cref="Constants.MinSqlValue"/>
         /// </summary>
         /// <param name="dateTime">The date time.</param>
-        public static bool IsValidSqlDateTime(this DateTime dateTime) => dateTime >= Constants.MinSqlValue;
+        public static bool IsValidSqlDateTime(this DateTime dateTime) => dateTime >= SqlDateTime.MinValue.Value && dateTime <= SqlDateTime.MaxValue.Value;
         /// <summary>
         /// ritorna la data da cui partire per calcolare range annuale in base alla data di sottoscrizione
         /// subscriptionDate: 2007-06-29

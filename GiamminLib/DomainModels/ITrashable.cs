@@ -4,7 +4,7 @@ namespace GiamminLib.DomainModels
 {
     public interface ITrashable
     {
-#if NETSTANDARD2_1
+#if NET5_0_OR_GREATER
         bool IsDeleted => DeletedDate.HasValue;
 #endif
         DateTime? DeletedDate { get; set; }
