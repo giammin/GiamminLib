@@ -3,8 +3,8 @@ on:
     types: [published]
 name: Publish nuget package on release
 jobs:
-  build:
-    runs-on: ubuntu-latest    
+  publish:
+  runs-on: ubuntu-latest    
     env:
       BUILD_CONFIG: 'Release'
       SOLUTION: 'MySolution.sln'
