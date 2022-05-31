@@ -5,7 +5,7 @@ on:
 name: Publish on release
 
 jobs:
-  publishNuget:
+  build:
     name: Publish nuget package
     runs-on: ubuntu-latest
     
