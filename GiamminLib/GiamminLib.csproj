@@ -9,7 +9,7 @@
 		<buildNumber>0</buildNumber>
 		<VersionSuffix>$([System.DateTime]::Now.ToString(yyMM)).$([System.DateTime]::Now.ToString(dd))</VersionSuffix>
 		<Version>$(VersionPrefix).$(VersionSuffix)$(buildNumber)</Version>
-		<PackageVersion>$(VersionPrefix).0</PackageVersion>
+		<PackageVersion>$(VersionPrefix).1</PackageVersion>
 
 		<GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
 		<PackageOutputPath>..\Nuget</PackageOutputPath>
