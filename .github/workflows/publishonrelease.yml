@@ -3,7 +3,7 @@ on:
     types: [published]
 name: Publish nuget package on release
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest    
     env:
       BUILD_CONFIG: 'Release'
