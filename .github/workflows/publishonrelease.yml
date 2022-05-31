@@ -1,28 +1,21 @@
 on:
   release:
     types: [published]
-name: Publish nuget package on release
+name: .NET Core build
 jobs:
-  publish:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v3.0.0
-    
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.5
+  build:
 
-    - name: Restore dependencies
-      run: nuget restore
+    runs-on: ubuntu-latest
 
-    - name: Setup .NET
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.x
-   
+        dotnet-version: 3.1.301
+    - name: Install dependencies
+      run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
-      
-    - name: Publish
-      if: startsWith(github.ref, 'refs/heads/release')
-      run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
