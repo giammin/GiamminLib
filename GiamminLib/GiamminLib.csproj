@@ -6,7 +6,7 @@
 		<LangVersion>10</LangVersion>
 
 		<VersionPrefix>0.4</VersionPrefix>
-		<buildNumber>0</buildNumber>
+		<buildNumber>1</buildNumber>
 		<VersionSuffix>$([System.DateTime]::Now.ToString(yyMM)).$([System.DateTime]::Now.ToString(dd))</VersionSuffix>
 		<Version>$(VersionPrefix).$(VersionSuffix)$(buildNumber)</Version>
 		<PackageVersion>$(VersionPrefix).1</PackageVersion>
