@@ -8,6 +8,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiamminLib.Tests", "test\GiamminLib.Tests\GiamminLib.Tests.csproj", "{B0840939-6DF3-4E58-944B-3CCF9D045136}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B85CADEA-E2DB-46E2-8E77-52F52B3A52A4}"
+	ProjectSection(SolutionItems) = preProject
+		test\Directory.Build.props = test\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6FB3A074-D009-4324-86AD-28E571DAEC6F}"
 	ProjectSection(SolutionItems) = preProject
