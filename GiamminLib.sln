@@ -3,9 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiamminLib", "GiamminLib\GiamminLib.csproj", "{A49F03A3-0842-4319-BA78-8A67E3DAAC9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiamminLib", "src\GiamminLib\GiamminLib.csproj", "{A49F03A3-0842-4319-BA78-8A67E3DAAC9C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiamminLib.Tests", "GiamminLib.Tests\GiamminLib.Tests.csproj", "{B0840939-6DF3-4E58-944B-3CCF9D045136}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiamminLib.Tests", "test\GiamminLib.Tests\GiamminLib.Tests.csproj", "{B0840939-6DF3-4E58-944B-3CCF9D045136}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B85CADEA-E2DB-46E2-8E77-52F52B3A52A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6FB3A074-D009-4324-86AD-28E571DAEC6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{5B23B58D-2AB1-424F-A703-B0C2E27D1873}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		LICENSE = LICENSE
+		NuGet.Config = NuGet.Config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github actions", "github actions", "{F566A46D-0EDC-4F28-8074-32C4564C7370}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\workflows\github-release.yml = .github\workflows\github-release.yml
+		.github\workflows\nuget-package.yml = .github\workflows\nuget-package.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +44,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A49F03A3-0842-4319-BA78-8A67E3DAAC9C} = {6FB3A074-D009-4324-86AD-28E571DAEC6F}
+		{B0840939-6DF3-4E58-944B-3CCF9D045136} = {B85CADEA-E2DB-46E2-8E77-52F52B3A52A4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C2799CD6-2B58-4F57-B73B-411E71EC4C68}
