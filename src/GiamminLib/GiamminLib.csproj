@@ -1,16 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
-		<LangVersion>latest</LangVersion>
-		<Nullable>enable</Nullable>
+		<IsAotCompatible>false</IsAotCompatible>
 	</PropertyGroup>
-	<ItemGroup>
-		<Content Include="Readme.md">
-			<Pack>true</Pack>
-			<PackagePath>\</PackagePath>
-		</Content>
-	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.18.0" />
 		<PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />

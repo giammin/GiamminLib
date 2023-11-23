@@ -48,10 +48,8 @@ public class Sha512Hasher:IHasher
     /// <summary>
     /// Encrypts the <param ref="original"></param> using the specified algorithm (T) and adding specified salt <param ref="salt"></param>
     /// </summary>
-    /// <typeparam name="T">the hashing algorithm to use</typeparam>
     /// <param name="original">The string to encript.</param>
     /// <param name="salt">the salt</param>
-    /// <param name="encoding">the encoding to use for read the original string</param>
     /// <returns>the hashed string with trailing salt value in Base64 format</returns>
     public string Encrypt(string original, byte[] salt)
     {
@@ -72,7 +70,6 @@ public class Sha512Hasher:IHasher
     /// <summary>
     /// Encrypts the <param ref="original"></param> using the specified algorithm (T) and adding specified salt <param ref="salt"></param>
     /// </summary>
-    /// <typeparam name="T">the hashing algorithm to use</typeparam>
     /// <param name="original">The string to encript.</param>
     /// <param name="salt">the salt</param>
     /// <returns>the hashed bytes with trailing salt value</returns>

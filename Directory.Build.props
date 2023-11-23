@@ -3,11 +3,6 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<LangVersion>latest</LangVersion>
 		<Nullable>enable</Nullable>
-		<!--<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<NoWarn>$(NoWarn);1591</NoWarn>-->
-		<Deterministic>true</Deterministic>
-		<DebugType>embedded</DebugType>
-		<TreatWarningsAsErrors Condition=" '$(Configuration)' == 'Release' ">true</TreatWarningsAsErrors>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 	</PropertyGroup>
 
@@ -18,14 +13,8 @@
 		<VersionSuffix>$([System.DateTime]::Now.ToString(yyMM)).$([System.DateTime]::Now.ToString(dd))</VersionSuffix>
 		<Version>$(VersionPrefix).$(VersionSuffix)$(buildNumber)</Version>
 
-
 		<PackageVersion>$(VersionPrefix).0</PackageVersion>
-
-		<GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
-		<PackageOutputPath>..\..\build</PackageOutputPath>
-		<PackageReadmeFile>Readme.md</PackageReadmeFile>
-		<IncludeSource>true</IncludeSource>
-		<IncludeSymbols>true</IncludeSymbols>
+ 
 		<Authors>giammin</Authors>
 		<Company>giammin</Company>
 
@@ -44,7 +33,6 @@
 		<!-- Optional: Embed source files that are not tracked by the source control manager to the PDB -->
 		<!-- This is useful if you generate files during the build -->
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-
 
 		<Product>GiamminLib$(debugSuffix)</Product>
 		<Copyright>Copyright $([System.DateTime]::Now.Year) (c) $(Company) All rights reserved.</Copyright>

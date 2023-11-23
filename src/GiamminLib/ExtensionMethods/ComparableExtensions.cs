@@ -8,7 +8,7 @@ namespace GiamminLib.ExtensionMethods;
 public static class ComparableExtensions
 {
     /// <summary>
-    /// check if <see cref="value"/> is between <see cref="lowerBoundary"/> and <see cref="upperBoundary"/>
+    /// check if <paramref name="value"/> is between <paramref name="lowerBoundary"/>  and <paramref name="upperBoundary"/>
     /// </summary>
     /// <param name="value"></param>
     /// <param name="lowerBoundary">the lower bound</param>
