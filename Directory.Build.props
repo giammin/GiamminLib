@@ -22,7 +22,7 @@
 		<PackageVersion>$(VersionPrefix).0</PackageVersion>
 
 		<GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
-		<PackageOutputPath>..\..\nuget</PackageOutputPath>
+		<PackageOutputPath>..\..\build</PackageOutputPath>
 		<PackageReadmeFile>Readme.md</PackageReadmeFile>
 		<IncludeSource>true</IncludeSource>
 		<IncludeSymbols>true</IncludeSymbols>
