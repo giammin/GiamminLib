@@ -6,6 +6,7 @@
 		<Deterministic>true</Deterministic>
 		<DebugType>embedded</DebugType>
 		<TreatWarningsAsErrors Condition=" '$(Configuration)' == 'Release' ">true</TreatWarningsAsErrors>
+       <IsAotCompatible>true</IsAotCompatible>
 	</PropertyGroup>
 
 	<ItemGroup>
